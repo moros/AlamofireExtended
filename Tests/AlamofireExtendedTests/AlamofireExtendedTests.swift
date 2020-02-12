@@ -1,15 +1,14 @@
 import XCTest
+import Alamofire
 @testable import AlamofireExtended
 
-final class AlamofireExtendedTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        //XCTAssertEqual(AlamofireExtended().text, "Hello, World!")
+final class AlamofireExtendedTests: XCTestCase
+{
+    func testExample()
+    {
     }
 
     static var allTests = [
-        ("testExample", testExample),
+        ("testExample", testExample)
     ]
 }
