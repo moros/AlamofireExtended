@@ -11,7 +11,7 @@ import Alamofire
 public protocol SessionManagerProtocol
 {
     /// The underlying session.
-    var session: URLSession { get }
+    var runningSession: URLSession? { get }
     
     /// The session delegate handling all the task and session delegate callbacks.
     var delegate: SessionDelegate { get }
@@ -413,6 +413,11 @@ public extension SessionManagerProtocol
 
 extension SessionManager: SessionManagerProtocol
 {
+    public var runningSession: URLSession?
+    {
+        return self.session
+    }
+    
     @discardableResult
     public func request(
         _ url: URLConvertible,

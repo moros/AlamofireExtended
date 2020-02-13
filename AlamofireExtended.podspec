@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name      = 'AlamofireExtended'
-    spec.version   = '1.0.4'
+    spec.version   = '1.0.5'
     spec.license   = 'MIT'
     spec.summary   = 'Extension to Alamofire that extends various classes with protocols.'
     spec.homepage  = 'https://github.com/moros/AlamofireExtended'

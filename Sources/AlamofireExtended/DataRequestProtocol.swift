@@ -15,7 +15,7 @@ public protocol RequestProtocol
     var task: URLSessionTask? { get }
     
     /// The session belonging to the underlying task.
-    var session: URLSession { get }
+    var runningSession: URLSession? { get }
     
     /// The request sent or to be sent to the server.
     var request: URLRequest? { get }
@@ -66,7 +66,7 @@ public protocol RequestProtocol
 public protocol DataRequestProtocol : RequestProtocol
 {
     /// The progress of fetching the response data from the server for the request.
-    var progress: Progress { get }
+    var currentProgress: Progress? { get }
     
     /// Sets a closure to be called periodically during the lifecycle of the request as data is read from the server.
     ///
@@ -168,7 +168,7 @@ public protocol DownloadRequestProtocol: RequestProtocol
     var resumeData: Data? { get }
     
     /// The progress of downloading the response data from the server for the request.
-    var progress: Progress { get }
+    var currentProgress: Progress? { get }
     
     /// Cancels the request.
     ///
@@ -438,10 +438,28 @@ public extension UploadRequestProtocol
 
 extension DataRequest: RequestProtocol, DataRequestProtocol
 {
+    public var runningSession: URLSession?
+    {
+        return self.session
+    }
+    
+    public var currentProgress: Progress?
+    {
+        return self.progress
+    }
 }
 
 extension DownloadRequest: RequestProtocol, DownloadRequestProtocol
 {
+    public var runningSession: URLSession?
+    {
+        return self.session
+    }
+    
+    public var currentProgress: Progress?
+    {
+        return self.progress
+    }
 }
 
 // UploadRequest inherits from DataRequest.
@@ -455,6 +473,10 @@ extension UploadRequest: UploadRequestProtocol
 
 extension StreamRequest: RequestProtocol
 {
+    public var runningSession: URLSession?
+    {
+        return self.session
+    }
 }
 
 #endif
