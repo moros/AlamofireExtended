@@ -10,10 +10,7 @@ import Alamofire
 /// Responsible for sending a request and receiving the response and associated data from the server, as well as
 /// managing its underlying `URLSessionTask`.
 public protocol RequestProtocol
-{
-    /// The delegate for the underlying task.
-    var delegate: TaskDelegate { get }
-    
+{   
     /// The underlying task.
     var task: URLSessionTask? { get }
     
